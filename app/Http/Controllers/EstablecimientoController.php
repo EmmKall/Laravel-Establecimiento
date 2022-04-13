@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Establecimiento;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class EstablecimientoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('establecimientos.create')->with('categorias', $categorias);
     }
 
     /**
@@ -57,7 +59,7 @@ class EstablecimientoController extends Controller
      */
     public function edit(Establecimiento $establecimiento)
     {
-        //
+        return 'desde edit';
     }
 
     /**
