@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->text('descripcion');
             $table->time('apertura');
+            $table->time('cierre');
             $table->uuid('uuid');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
