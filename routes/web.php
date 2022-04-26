@@ -3,7 +3,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\EstablecimientoController;
 
 /*
@@ -17,9 +19,9 @@ use App\Http\Controllers\EstablecimientoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {return view('welcome'); });
+
+Route::get('/', InicioController::class )->name('inicio');
 
 Auth::routes(['verify' => true]);
 
@@ -36,5 +38,6 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 });
 
 
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Listado API
+Route::get('/categorias', [APIController::class, 'categorias'] )->name('categorias');
+Route::get('/categorias/{categoria}', [APIController::class, 'categoria'] )->name('categoria');
